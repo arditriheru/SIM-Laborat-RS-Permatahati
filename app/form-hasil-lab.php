@@ -50,42 +50,45 @@
 										<td><b>No.RM</b></td>
 										<td><?php echo $d['id_catatan_medik']; ?></td>
 										<td><b>Dokter</b></td>
-										<td><?php echo $d['nama_dokter']; ?></td>
+										<td colspan="2"><?php echo $d['nama_dokter']; ?></td>
 									</td>
 								</tr>
 								<tr>
 									<td><b>Nama Pasien</b></td>
 									<td><?php echo $d['nama_pasien']; ?></td>
 									<td><b>Unit</b></td>
-									<td><?php echo $d['nama_unit']; ?></td>
+									<td colspan="2"><?php echo $d['nama_unit']; ?></td>
 								</tr>
 								<tr>
 									<td><b>Umur</b></td>
 									<td><?php echo $umur->y; echo " Tahun, "; echo $umur->m; echo " Bulan, dan "; echo $umur->d; echo " Hari"; ?></td>
 									<td><b>Tanggal / Jam</b></td>
-									<td><?php echo $d['tanggal'].' / '.$d['jam']; ?>
+									<td colspan="2"><?php echo $d['tanggal'].' / '.$d['jam']; ?>
 								</tr>
 								<tr>
 									<td><b>Jenis Kelamin</b></td>
 									<td><?php echo $d['jekel']; ?></td>
 									<td><b>Alamat</b></td>
-									<td><?php echo $d['alamat']; ?></td>
+									<td colspan="2"><?php echo $d['alamat']; ?></td>
 								</tr>
 								<tr>
-									<td align="center" colspan="4"><b>HASIL PENGUJIAN</b></td>
+									<td align="center" colspan="5"><b>HASIL PENGUJIAN</b></td>
 								</tr>
 								<tr>
 									<td align="center"><b>Nama Tes</b></td>
 									<td align="center"><b>Hasil</b></td>
 									<td align="center"><b>Nilai Normal</b></td>
 									<td align="center"><b>Satuan</b></td>
+									<td align="center"><b>Sampel</b></td>
 								</tr>
 								<?php 
 								$a = mysqli_query($koneksi,
-									"SELECT lab_tarif.nama, lab_tarif.nilai_normal, lab_tarif.satuan, lab_trn_hasil.hasil_uji
+									"SELECT lab_tarif.nama, lab_tarif.nilai_normal, lab_tarif.satuan, lab_trn_hasil.hasil_uji, lab_sampel.nama_sampel
 									FROM lab_tarif
 									INNER JOIN lab_trn_hasil
 									ON lab_tarif.id_lab_tarif = lab_trn_hasil.id_lab_tarif
+									INNER JOIN lab_sampel
+									ON lab_tarif.id_lab_sampel = lab_sampel.id_lab_sampel
 									WHERE lab_trn_hasil.id_lab_trn='$id_lab_trn'
 									AND lab_tarif.id_lab_tarif IN($peme);");
 								while($b = mysqli_fetch_array($a)){
@@ -94,6 +97,7 @@
 									"<td align='center'>".$b['hasil_uji']."</td>".
 									"<td align='center'>".$b['nilai_normal']."</td>".
 									"<td align='center'>".$b['satuan']."</td>".
+									"<td align='center'>".$b['nama_sampel']."</td>".
 									"</tr>";
 								}
 								?>
