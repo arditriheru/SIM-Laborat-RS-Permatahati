@@ -9,7 +9,7 @@ include "session-start.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SIMRS | Laboratorium</title>
+    <title>RSKIA PERMATA | Laboratorium</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="../vendors/css/bootstrap.css">
     <!-- Add custom CSS here -->
