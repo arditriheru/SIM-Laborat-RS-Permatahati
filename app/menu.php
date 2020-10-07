@@ -8,7 +8,11 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="https://instagram.com/arditriheru" class="navbar-brand">S I M E T R I S</a>
+    <ul class="nav navbar-nav navbar-left navbar-user">
+      <a href="https://instagram.com/arditriheru">
+        <img class="img-responsive" src="../images/logo.png" width="100%" alt="RS Permata">
+      </a>
+    </ul>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,6 +29,7 @@
           </ul>
         </li>
         <li><a href="dokter-tambah.php"><i class="fa fa-user-md"></i> Dokter</a></li>
+        <li><a href="info.php"><i class="fa fa-paper-plane"></i> Customer Service</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-user">
         <li>
