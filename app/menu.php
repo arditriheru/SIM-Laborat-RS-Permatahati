@@ -29,7 +29,7 @@
           </ul>
         </li>
         <li><a href="dokter-tambah.php"><i class="fa fa-user-md"></i> Dokter</a></li>
-        <li><a href="info.php"><i class="fa fa-paper-plane"></i> Customer Service</a></li>
+        <li><a href="info.php"><i class="fa fa-question-circle"></i> Customer Service</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-user">
         <li>
