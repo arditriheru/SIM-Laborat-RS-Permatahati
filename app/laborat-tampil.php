@@ -41,7 +41,7 @@
               if($d['status']=='1'){ ?>
                 <td><center><button type="button" class="btn btn-primary"><i class='fa fa-check'></center></td>
                 <?php }else{ ?>
-                  <td><center><button type="button" class="btn btn-warning"><i class='fa fa-times'></center></td>
+                  <td><center><button type="button" class="btn btn-danger"><i class='fa fa-times'></center></td>
                   <?php }
                   ?>
                   <td><center><?php echo $d['id_mr_pendaftaran']; ?></center></td>
