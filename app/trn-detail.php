@@ -23,7 +23,15 @@
         </div>
         <button type="submit" class="btn btn-primary"><i class='fa fa-print'></i> Print</button>
       </form>
+    </div>
+    <div align="right" class="col-lg-6">
+      <a href="laborat-hapus.php?id=<?php echo $id_lab_trn; ?>"
+        onclick="javascript: return confirm('Anda yakin hapus?')">
+        <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+      </a>
     </div><br><br><br>
+  </div>
+  <div class="row">
     <div class="col-lg-12">
       <?php
       include '../config/connect.php';

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>SIMRS | Laboratorium</title>
+	<title>RSKIA Permata | Login</title>
 	<!-- Login page CSS -->
 	<link rel="stylesheet" type="text/css" href="../vendors/css/style.css">
 	<!-- Bootstrap core CSS -->
@@ -66,7 +66,7 @@
 							}
 							?>
 							<div class="kotak_login">
-								<div align="center"><i class="fa fa-user-circle-o fa-3x"></i></div><br>
+								<div align="center"><img class="img-responsive" src="../images/logo.png" width="100%" alt="RS Permata"></div><br>
 								<form method="post">
 									<!-- <label>Username</label> -->
 									<input type="text" name="username" class="form_login" placeholder="Username" required>
@@ -75,8 +75,8 @@
 									<input type="submit" class="tombol_login" name="loginsubmit" value="Submit">
 									<br><br>			
 								</form>
+								<?php include "../config/copyright.php";?>
 							</div>
-							<?php include "../../system/copyright.php";?>
 							<!-- JavaScript -->
 							<script type="text/javascript" src="../vendors/js/font-awesome.js"></script>
 							<script type="text/javascript" src="../vendors/js/jquery-1.10.2.js"></script>
