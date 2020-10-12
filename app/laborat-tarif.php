@@ -19,7 +19,7 @@
     <div class="col-lg-6">
       <form method="post" action="" role="form">
         <div class="form-group">
-          <label>Nama Parameter</label>
+          <label>Parameter</label>
           <input class="form-control" type="text" name="nama" placeholder="Masukkan.." required="">
         </div>
         <div class="form-group">
@@ -98,6 +98,43 @@
                   }
                   ?>
                 </div>
-              </div>
-            </div><!-- /#page-wrapper -->
-            <?php include "views/footer.php"; ?>
+                <div class="col-lg-6">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped tablesorter">
+                      <thead>
+                        <tr>
+                          <th><center>#</center></th>
+                          <th><center>Nama Parameter</center></th>
+                          <th><center>Nilai Normal</center></th>
+                          <th><center>Satuan</center></th>
+                          <th><center>Tarif</center></th>
+                          <th colspan='2'><center>Action</center></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
+                        $no = 1;
+                        $data = mysqli_query($koneksi,
+                          "SELECT * FROM lab_tarif ORDER BY nama ASC;");
+                        while($d = mysqli_fetch_array($data)){
+                          ?>
+                          <tr>
+                            <td><center><?php echo $no++; ?></center></td>
+                            <td><left><?php echo $d['nama']; ?></left></td>
+                            <td><center><?php echo $d['nilai_normal']; ?></center></td>
+                            <td><center><?php echo $d['satuan']; ?></center></td>
+                            <td><center><?php echo $d['tarif']; ?></center></td>
+                            <td>
+                              <div align="center">
+                                <a href="laborat-tarif-edit.php?id=<?php echo $d['id_lab_tarif']; ?>"
+                                  <button type="button" class="btn btn-success"><i class='fa fa-pencil'></i></button></a>
+                                </div>
+                              </td>
+                              </tr><?php } ?>
+                            </tbody>
+                          </table>
+                        </div><!-- col-lg-12 -->
+                      </div>
+                    </div>
+                  </div><!-- /#page-wrapper -->
+                  <?php include "views/footer.php"; ?>

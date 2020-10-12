@@ -29,15 +29,15 @@
             <div class="form-group">
               <label>Nomor Rekam Medik</label>
               <input class="form-control" type="text" onkeyup="isi_otomatis()" id="id_catatan_medik"
-              placeholder="Masukkan Nomor Rekam Medik" name="id_catatan_medik" required="">
+              placeholder="Silahkan Masukkan.." name="id_catatan_medik" required="">
             </div>
             <div class="form-group">
               <label>Nama Pasien</label>
               <input class="form-control" type="text" id="nama_pasien" name="nama_pasien" 
-              placeholder="Nama Pasien (otomatis)" readonly>
+              placeholder="Nama Pasien" readonly>
             </div>
             <div class="form-group">
-              <label>Dokter</label>
+              <label>Nama Dokter</label>
               <select class="form-control" type="text" name="id_dokter"
               value="<?php echo $d['id_dokter']; ?>" required="">
               <option value="">Pilih</option>
@@ -50,7 +50,7 @@
               ?>
             </select>
           </div>
-          <button type="submit" name="tambahlamasubmit" class="btn btn-success">Submit</button>
+          <button type="submit" name="tambahlamasubmit" class="btn btn-primary">Daftar</button>
         </form>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript">
@@ -121,6 +121,31 @@
                       $telp               = $_POST['telp'];
                       $email              = $_POST['email'];
 
+                      if (empty($id_catatan_medik))
+                        exit;
+
+                        //menampilkan file image barcode
+                      echo '<img src="../vendors/barcode/barcode.php?text=' . $id_catatan_medik . '&print=true&size=65" />';
+
+                        //buat folder untuk simpan file image
+                      $tempdir = "../images/imagesbarcode/";
+                      if (!file_exists($tempdir))
+                        mkdir($tempdir, 0755);
+
+                      $target_path = $tempdir . $id_catatan_medik . ".png";
+
+                        //cek apakah server menggunakan http atau https
+                      $protocol = stripos($_SERVER['SERVER_PROTOCOL'], 'https') === 0 ? 'https://' : 'http://';
+
+                        //url file image barcode 
+                      $fileImage = $protocol . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/../vendors/barcode/barcode.php?text=" . $id_catatan_medik . "&print=true&size=65";
+
+                        //ambil gambar barcode dari url diatas
+                      $content = file_get_contents($fileImage);
+                      
+                        //simpan gambar
+                      file_put_contents($target_path, $content);
+
                       $simpan=mysqli_query($koneksi,"INSERT INTO mr_pasien (id_pasien, id_catatan_medik, nama_pasien, sex, tempat, tgl_lahir, alamat, kabupaten, kecamatan, kelurahan, telp, email)VALUES('','$id_catatan_medik','$nama_pasien','$sex','$tempat','$tgl_lahir','$alamat','$kabupaten','$kecamatan','$kelurahan','$telp','$email')");
                       if($simpan){
                         echo '<script>
@@ -155,23 +180,23 @@
                                     "SELECT MAX(id_catatan_medik) AS maxrm FROM mr_pasien;");
                                     while($b = mysqli_fetch_array($a)){ ?>
                                       <div class="form-group">
-                                        <label>No.Rekam Medik</label>
+                                        <label>Nomor Rekam Medik</label>
                                         <input class="form-control" type="text" name="id_catatan_medik" value="<?php echo $b['maxrm']+1; ?>" readonly="">
                                         </div><?php } ?>
                                         <div class="form-group">
                                           <label>Nama Pasien</label>
-                                          <input class="form-control" type="text" name="nama_pasien" placeholder="Masukkan.." required="">
+                                          <input class="form-control" type="text" name="nama_pasien" placeholder="Silahkan Masukkan.." required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Tempat Lahir</label>
-                                          <input class="form-control" type="text" name="tempat" placeholder="Masukkan.." required="">
+                                          <input class="form-control" type="text" name="tempat" placeholder="Silahkan Masukkan.." required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Tanggal Lahir</label>
-                                          <input class="form-control" type="date" name="tgl_lahir" placeholder="Masukkan.." required="">
+                                          <input class="form-control" type="date" name="tgl_lahir" placeholder="Silahkan Masukkan.." required="">
                                         </div>
                                         <div class="form-group">
-                                          <label>Sex</label>
+                                          <label>Jenis Kelamin</label>
                                           <select class="form-control" type="text" name="sex" required="">
                                             <option value="">Pilih</option>
                                             <option value='1'>Laki-laki</option>
@@ -180,29 +205,29 @@
                                         </div>
                                         <div class="form-group">
                                           <label>Alamat</label>
-                                          <input class="form-control" type="text" name="alamat" placeholder="Masukkan.." required="">
+                                          <input class="form-control" type="text" name="alamat" placeholder="Silahkan Masukkan.." required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Kelurahan</label>
-                                          <input class="form-control" type="text" name="kelurahan" placeholder="Masukkan.." required="">
+                                          <input class="form-control" type="text" name="kelurahan" placeholder="Silahkan Masukkan.." required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Kecamatan</label>
-                                          <input class="form-control" type="text" name="kecamatan" placeholder="Masukkan.." required="">
+                                          <input class="form-control" type="text" name="kecamatan" placeholder="Silahkan Masukkan.." required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Kabupaten</label>
-                                          <input class="form-control" type="text" name="kabupaten" placeholder="Masukkan.." required="">
+                                          <input class="form-control" type="text" name="kabupaten" placeholder="Silahkan Masukkan.." required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Kontak</label>
-                                          <input class="form-control" type="number" name="telp" placeholder="Masukkan.." required="">
+                                          <input class="form-control" type="number" name="telp" placeholder="Silahkan Masukkan.." required="">
                                         </div>
                                         <div class="form-group">
                                           <label>Email</label>
-                                          <input class="form-control" type="text" name="email" placeholder="Masukkan.." required="">
+                                          <input class="form-control" type="text" name="email" placeholder="Silahkan Masukkan.." required="">
                                         </div>
-                                        <button type="submit" name="tambahbarusubmit" class="btn btn-success">Submit</button>
+                                        <button type="submit" name="tambahbarusubmit" class="btn btn-primary">Tambah</button>
                                       </form>
                                     </div>
                                   </div>

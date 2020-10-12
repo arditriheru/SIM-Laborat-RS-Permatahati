@@ -8,9 +8,9 @@
             <th><center>Status</center></th>
             <th><center>No.Reg</center></th>
             <th><center>Registrasi</center></th>
-            <th><center>No.RM</center></th>
+            <th><center>Nomor RM</center></th>
             <th><center>Nama Pasien</center></th>
-            <th><center>TTL</center></th>
+            <!-- <th><center>TTL</center></th> -->
             <th><center>Unit</center></th>
             <th><center>Dokter</center></th>
             <th colspan='2'><center>Action</center></th>
@@ -48,7 +48,7 @@
                   <td><center><?php echo date('d-m-Y', strtotime($tanggal)).' ('.$d['jam'].')'; ?></center></td>
                   <td><center><?php echo $d['id_catatan_medik']; ?></center></td>
                   <td><center><?php echo $d['nama_pasien']; ?></center></td>
-                  <td><center><?php echo $d['tempat'].', '.date('d F Y', strtotime($tgl_lahir)); ?></center></td>
+                  <!-- <td><center><?php echo $d['tempat'].', '.date('d F Y', strtotime($tgl_lahir)); ?></center></td> -->
                   <td><center><?php echo $d['nama_unit']; ?></center></td>
                   <td><center><?php echo $d['nama_dokter']; ?></center></td>
                   <td>

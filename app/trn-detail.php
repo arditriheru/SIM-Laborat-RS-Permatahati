@@ -57,6 +57,11 @@
         <table class="table table-bordered">
           <tbody>
             <tr>
+              <div align="right">
+                <img class="img-responsive" src="../images/imagesbarcode/<?php echo $d['id_catatan_medik']; ?>.png" width="15%" alt="imagesbarcode">
+              </div>
+            </tr>
+            <tr>
               <td><b>No.RM</b></td>
               <td><?php echo $d['id_catatan_medik']; ?></td>
               <td><b>No.Register</b></td>

@@ -31,9 +31,14 @@
 					<div class="container">
 						<div class="container">
 							<div class="noprint">
-								<a href="dashboard.php"><button type="button" class="btn btn-success">Dashboard</button></a>
+								<a href="laborat-tambah.php"><button type="button" class="btn btn-success">Dashboard</button></a>
 							</div>
 							<br><br><br>
+							<row>
+								<div align="right">
+									<img class="img-responsive" src="../images/imagesbarcode/<?php echo $d['id_catatan_medik']; ?>.png" width="15%" alt="imagesbarcode">
+								</div>
+							</row>
 							<center>
 								<div class="row">
 									<img class="img-responsive" src="../images/Kop Surat.jpg" width="100%" alt="Kop Surat Laboratorium">

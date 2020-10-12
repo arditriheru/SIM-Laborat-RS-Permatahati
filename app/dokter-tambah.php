@@ -71,6 +71,43 @@
                   }
                   ?>
                 </div>
-              </div>
-            </div><!-- /#page-wrapper -->
-            <?php include "views/footer.php"; ?>
+                <div class="col-lg-6">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped tablesorter">
+                      <thead>
+                        <tr>
+                          <th><center>#</center></th>
+                          <th><center>Nama Dokter</center></th>
+                          <th><center>Unit</center></th>
+                          <!-- <th colspan='2'><center>Action</center></th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
+                        $no = 1;
+                        $data = mysqli_query($koneksi,
+                          "SELECT *, mr_unit.nama_unit
+                          FROM mr_dokter
+                          INNER JOIN mr_unit
+                          ON mr_dokter.id_unit = mr_unit.id_unit
+                          ORDER BY nama_dokter ASC;");
+                        while($d = mysqli_fetch_array($data)){
+                          ?>
+                          <tr>
+                            <td><center><?php echo $no++; ?></center></td>
+                            <td><left><?php echo $d['nama_dokter']; ?></left></td>
+                            <td><center><?php echo $d['nama_unit']; ?></center></td>
+                            <!-- <td>
+                              <div align="center">
+                                <a href="trn-detail.php?id=<?php echo $d['id_lab_trn']; ?>"
+                                  <button type="button" class="btn btn-success"><i class='fa fa-file-text'></i></button></a>
+                                </div>
+                              </td> -->
+                              </tr><?php } ?>
+                            </tbody>
+                          </table>
+                        </div><!-- col-lg-12 -->
+                      </div>
+                    </div>
+                  </div><!-- /#page-wrapper -->
+                  <?php include "views/footer.php"; ?>
